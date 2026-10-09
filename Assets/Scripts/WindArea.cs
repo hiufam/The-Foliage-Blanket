@@ -15,6 +15,7 @@ public class WindArea : MonoBehaviour
   public float2 forceAngleVariance = new Vector2(-10f, 10f);
   public float interval = 1f;
   public int maxLeaves = 10;
+  public float maxLeavesPercentage = 0.3f;
   public Vector2 windDir = Vector2.right;
 
   private float applyForceTimer = 0f;
@@ -62,6 +63,7 @@ public class WindArea : MonoBehaviour
   private void ApplyForce()
   {
     if (objects.Count == 0) return;
+    maxLeaves = (int)(objects.Count * maxLeavesPercentage);
     List<int> randomIndices = RandomIndices(objects.Count, maxLeaves);
 
     for (int i = 0; i < randomIndices.Count; i++)

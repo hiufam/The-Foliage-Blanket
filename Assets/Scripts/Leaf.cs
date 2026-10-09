@@ -27,12 +27,11 @@ public class Leaf : MonoBehaviour
   {
     if (label != null && label >= 0)
     {
-      trueLabel = label.Value;
-      spriteRenderer.color = colors[trueLabel % colors.Length];
+      spriteRenderer.color = Color.white;
     }
     else
     {
-      spriteRenderer.color = Color.white;
+      spriteRenderer.color = Color.orangeRed;
     }
   }
 
