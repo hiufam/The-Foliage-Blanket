@@ -28,6 +28,10 @@ public class Leaf : MonoBehaviour
       trueLabel = label.Value;
       spriteRenderer.color = colors[trueLabel % colors.Length];
     }
+    else
+    {
+      spriteRenderer.color = Color.white;
+    }
   }
 
   public Vector2 GetPosition()

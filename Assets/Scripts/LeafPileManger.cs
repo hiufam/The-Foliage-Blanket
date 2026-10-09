@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEditor.Timeline;
 using UnityEngine;
 
 // Source: https://en.wikipedia.org/wiki/DBSCAN
@@ -84,25 +83,25 @@ public class LeafPileManager : MonoBehaviour
 
       leaf.label = clusterCounter;
 
-      // Seed set without current leaf
+      //Seed set without current leaf
       List<Leaf> seedSetLeafPile = leafPile.leaves.Where(i => i != leaf).ToList();
 
-      // foreach (Leaf qLeaf in seedSetLeafPile)
-      // {
-      //   if (qLeaf.label == -1) qLeaf.label = clusterCounter;
-      //   if (qLeaf.label != null) continue;
+      for (int i = 0; i < seedSetLeafPile.Count; i++)
+      {
+        Leaf qLeaf = seedSetLeafPile[i];
 
-      //   qLeaf.label = clusterCounter;
+        if (qLeaf.label == -1) qLeaf.label = clusterCounter;
+        if (qLeaf.label != null) continue;
 
-      //   LeafPile qLifePile = RangeQuery(leaves, distFunc, qLeaf, eps);
+        qLeaf.label = clusterCounter;
 
-      //   if (qLifePile.leaves.Count >= minLeafs)
-      //   {
-      //     seedSetLeafPile.AddRange(qLifePile.leaves);
-      //   }
-      // }
-    
-      SubScan(seedSetLeafPile, distFunc, eps, minLeafs);
+        LeafPile qLifePile = RangeQuery(leaves, distFunc, qLeaf, eps);
+
+        if (qLifePile.leaves.Count >= minLeafs)
+        {
+          seedSetLeafPile.AddRange(qLifePile.leaves);
+        }
+      }
     }
   }
 
@@ -123,7 +122,6 @@ public class LeafPileManager : MonoBehaviour
       }
     }
   }
-
 
   private LeafPile RangeQuery(List<Leaf> leaves, Func<Vector2, Vector2, float> distFunc, Leaf qLeaf, float eps)
   {
