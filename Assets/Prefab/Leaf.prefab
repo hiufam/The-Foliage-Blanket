@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1404070141959621961}
   - component: {fileID: 8766726185723707804}
   - component: {fileID: -102605875765156097}
-  m_Layer: 7
+  m_Layer: 6
   m_Name: Leaf
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 2
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: bfddc2fed30a2874393cf0268224522a, type: 2}
@@ -134,10 +134,10 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 193
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 118
+    m_Bits: 54
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -169,3 +169,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff926f810a254d4e80a8a06125bafa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Leaf
+  trueLabel: 0

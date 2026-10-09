@@ -80,7 +80,10 @@ public class LeafPileManager : MonoBehaviour
 
   private void ConstructConvexPolygon(Leaf[] leaves)
   {
-    GameObject poly = new GameObject();
+    GameObject poly = new GameObject()
+    {
+      layer = 6,
+    };
 
     PolygonCollider2D cl = poly.AddComponent<PolygonCollider2D>();
     List<Vector2> points = leaves.Select(leaf => leaf.GetPosition()).ToList();

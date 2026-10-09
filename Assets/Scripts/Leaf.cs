@@ -8,12 +8,14 @@ public class Leaf : MonoBehaviour
   public LeafPile leafPile = null;
 
   private SpriteRenderer spriteRenderer;
+  private Rigidbody2D rb;
 
   private Color[] colors = {Color.red, Color.green, Color.blue, Color.yellow, Color.purple};
 
   private void Awake()
   {
     spriteRenderer = GetComponent<SpriteRenderer>();
+    rb = GetComponent<Rigidbody2D>();
   }
 
   private void Start()
@@ -32,6 +34,11 @@ public class Leaf : MonoBehaviour
     {
       spriteRenderer.color = Color.white;
     }
+  }
+
+  public void ApplyForce(Vector2 force)
+  {
+    rb.AddForce(force);
   }
 
   public Vector2 GetPosition()
