@@ -63,6 +63,8 @@ public class LeafPileManager : MonoBehaviour
 
         DBSCAN(leaves, distFunc, eps, minLeafs);
 
+        ResetPoly();
+
         for (int i = 0; i < clusterCounter; i++)
         {
           int clusterIndex = i + 1;
@@ -91,20 +93,24 @@ public class LeafPileManager : MonoBehaviour
     polys.Add(poly);
   }
 
-  private void Reset()
+  private void ResetCluster()
   {
     clusterCounter = 0;
 
     leaves.ForEach((leaf) => leaf.label = null);
+    leafPiles = new();
+  }
+
+  private void ResetPoly()
+  { 
     polys.ForEach((p) => Destroy(p.gameObject));
 
     polys = new();
-    leafPiles = new();
   }
 
   private void DBSCAN(List<Leaf> leaves, Func<Vector2, Vector2, float> distFunc, float eps, int minLeafs)
   {
-    Reset();
+    ResetCluster();
 
     foreach (Leaf leaf in leaves)
     {
