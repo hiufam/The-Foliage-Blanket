@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
   [Header("Attributes")]
   [DefaultValue(10)]
   public float speed = 1f;
+  public float health = 100f;
+  public float maxHealth = 100f;
 
   [Header("Objects")]
   public Item item;
