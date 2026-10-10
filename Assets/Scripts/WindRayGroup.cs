@@ -106,7 +106,7 @@ public class WindRayGroup : MonoBehaviour
     {
       Vector2? posPile = PickLargestPilePosition();
 
-      if (pos != null)
+      if (posPile != null)
       {
         targetPos = posPile.Value;
       }

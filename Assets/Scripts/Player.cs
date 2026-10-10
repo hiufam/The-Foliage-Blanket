@@ -53,6 +53,15 @@ public class Player : MonoBehaviour
     }
   }
 
+  
+  public void OnAltAttack(InputValue inputValue)
+  {
+    if (item != null)
+    {
+      item.AltUse(lookDirection);
+    }
+  }
+
   public void OnInteract(InputValue inputValue)
   {
     if (item != null)

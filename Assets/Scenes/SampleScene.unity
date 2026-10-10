@@ -833,7 +833,7 @@ Transform:
   m_GameObject: {fileID: 372544629}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1428,7 +1428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 720, y: -430}
+  m_AnchoredPosition: {x: 670, y: -220}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &679245999
@@ -25491,18 +25491,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1017281062665408805, guid: 17a375312989cb04ebdbd9a9ce517a20, type: 3}
-      propertyPath: pushForce
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 1017281062665408805, guid: 17a375312989cb04ebdbd9a9ce517a20, type: 3}
-      propertyPath: pushForceVariance.x
-      value: -5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1017281062665408805, guid: 17a375312989cb04ebdbd9a9ce517a20, type: 3}
-      propertyPath: pushForceVariance.y
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7454720169463039214, guid: 17a375312989cb04ebdbd9a9ce517a20, type: 3}
       propertyPath: m_Name
       value: Rake

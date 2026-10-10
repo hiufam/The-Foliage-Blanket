@@ -6,8 +6,12 @@ using UnityEngine;
 
 public class Rake : Item
 {
+  private static readonly int PushHash = Animator.StringToHash("Push");
+  private static readonly int PullHash = Animator.StringToHash("Pull");
+
   [Header("Attributes")]
   public float pushForce = 500f;
+  public float pullForce = 250f;
   public float2 pushForceVariance = new float2(-10f, 10f);
 
   public float torqueForce = 100f;
@@ -15,11 +19,13 @@ public class Rake : Item
   [Header("Components")]
 
   private BoxCollider2D cl;
+  private Animator animator;
   private List<GameObject> gameObjects = new();
 
   private void Awake()
   {
     cl = GetComponent<BoxCollider2D>();
+    animator = GetComponent<Animator>();
   }
 
   public override void Use(Vector2? dir = null)
@@ -35,6 +41,26 @@ public class Rake : Item
         // rb.AddTorque(UnityEngine.Random.value > 0.5f ? torqueForce : -torqueForce);
       } 
     }
+
+    animator.ResetTrigger(PullHash);
+    animator.SetTrigger(PushHash);
+  }
+
+  public override void AltUse(Vector2? dir = null)
+  {
+    base.AltUse();
+  
+    if (dir == null) return;
+
+    foreach (var go in gameObjects)
+    {
+      if (go.TryGetComponent(out Rigidbody2D rb)) {
+        rb.AddForce(dir.Value.normalized * (-pullForce + UnityEngine.Random.Range(pushForceVariance.x, pushForceVariance.y)));
+      } 
+    }
+
+    animator.ResetTrigger(PushHash);
+    animator.SetTrigger(PullHash);
   }
 
   private void OnTriggerEnter2D(Collider2D collision)
