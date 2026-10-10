@@ -817,6 +817,7 @@ GameObject:
   m_Component:
   - component: {fileID: 372544630}
   - component: {fileID: 372544631}
+  - component: {fileID: 372544632}
   m_Layer: 3
   m_Name: Sprite
   m_TagString: Untagged
@@ -898,6 +899,28 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 1
+--- !u!95 &372544632
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372544629}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1586136d9224d6a40a46fe0a5ef9fd49, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &512685125
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1193,7 +1216,7 @@ MonoBehaviour:
   windArea: {fileID: 925303434}
   windDoT: 1
   healOT: 1.5
-  timeBeforeHeal: 1
+  timeBeforeHeal: 0.6
   windStartDelay: 1
   windDuration: 10
   callWindOnStart: 1
@@ -1625,6 +1648,7 @@ MonoBehaviour:
   maxHealth: 10
   item: {fileID: 980269782}
   arm: {fileID: 582763328}
+  animator: {fileID: 372544632}
 --- !u!61 &767951412
 BoxCollider2D:
   m_ObjectHideFlags: 0

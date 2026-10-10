@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+  private static readonly int Walking = Animator.StringToHash("Walking");
+  private static readonly int Default = Animator.StringToHash("Default");
+
+
   [Header("Attributes")]
   [DefaultValue(10)]
   public float speed = 1f;
@@ -14,10 +18,12 @@ public class Player : MonoBehaviour
   [Header("Objects")]
   public Item item;
   public GameObject arm;
+  public Animator animator;
 
   private Vector3 moveDirection;
   private Vector2 lookDirection;
   private Rigidbody2D rb;
+  private int aniClip = -1;
 
   private void Awake()
   {
@@ -33,7 +39,15 @@ public class Player : MonoBehaviour
   {
     // UpdatePosition();
     UpdateArmRotation();
+
+
+    if (aniClip != Default && moveDirection == Vector3.zero)
+    {
+      animator.Play(Default);
+      aniClip = Default;
+    }
   }
+  
 
   private void FixedUpdate() 
   {
@@ -43,6 +57,11 @@ public class Player : MonoBehaviour
   public void OnMove(InputValue inputValue)
   {
     moveDirection = inputValue.Get<Vector2>();
+    if (aniClip != Walking)
+    {
+      animator.Play(Walking);
+      aniClip = Walking;
+    }
   }
 
   public void OnAttack(InputValue inputValue)

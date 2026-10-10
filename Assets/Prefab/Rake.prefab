@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rake
   pushForce: 150
+  pullForce: 100
   pushForceVariance:
     x: -5
     y: 5
