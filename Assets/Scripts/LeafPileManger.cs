@@ -39,8 +39,6 @@ public class LeafPileManager : MonoBehaviour
     }
 
     Instance = this;
-
-    DontDestroyOnLoad(gameObject);
   }
 
   private void Start()

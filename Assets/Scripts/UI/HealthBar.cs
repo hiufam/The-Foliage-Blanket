@@ -13,6 +13,8 @@ public class HealthBar : MonoBehaviour
 
   public void SetValue(float value)
   {
+    if (slider == null) return;
+
     Color color = Color.Lerp(Color.blue, Color.orange, value); 
     
     slider.value = value;

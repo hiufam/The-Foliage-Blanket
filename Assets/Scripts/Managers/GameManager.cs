@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,8 +47,6 @@ public class GameManager : MonoBehaviour
     }
 
     Instance = this;
-
-    DontDestroyOnLoad(gameObject);
   }
 
 
@@ -90,6 +89,11 @@ public class GameManager : MonoBehaviour
   private void FixedUpdate()
   {
     DetectHit();
+  }
+
+  public void Reset()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
   }
 
   private void HitPlayer()
