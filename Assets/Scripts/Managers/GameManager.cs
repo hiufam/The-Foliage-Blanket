@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour
     }
     healthBar.SetValue(player.health / player.maxHealth);    
     healthBarSmall.SetValue(player.health / player.maxHealth);
+
+    if (player.health <= 0 && !player.isDead)
+    {
+      player.Die();
+    }
   }
 
   private void FixedUpdate()

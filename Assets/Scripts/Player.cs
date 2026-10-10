@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
 
   [Header("Reading")]
   public bool isStun = false;
+  public bool isDead = false;
 
   [Header("Objects")]
   public Item item;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
   private Vector2 lookDirection;
   private Rigidbody2D rb;
   private int aniClip = -1;
+  private Coroutine stunRoutine;
 
   private void Awake()
   {
@@ -44,7 +46,7 @@ public class Player : MonoBehaviour
 
   private void Update()
   {
-    if (isStun) return;
+    if (isStun || isDead) return;
     // UpdatePosition();
     UpdateArmRotation();
 
@@ -59,11 +61,42 @@ public class Player : MonoBehaviour
 
   private void FixedUpdate() 
   {
-    if (isStun) return;
+    if (isStun || isDead) return;
 
     rb.linearVelocity = moveDirection * speed;  
   }
 
+  public void Revive()
+  {
+    isDead = false;
+    isStun = false;
+
+    if (aniClip != Default)
+    {
+      animator.Play(Default);
+      aniClip = Default;
+    }
+  }
+
+  public void Die()
+  {
+    if (isDead) return;
+
+    isStun = true;
+    isDead =  true;
+
+    rb.linearVelocity = Vector2.zero;
+    moveDirection = Vector2.zero;
+
+    if (stunRoutine != null)
+      StopCoroutine(stunRoutine);
+
+    if (aniClip != Knockout)
+    {
+      animator.Play(Knockout);
+      aniClip = Knockout;
+    }
+  }
 
   public void Stun()
   {
@@ -74,7 +107,7 @@ public class Player : MonoBehaviour
     rb.linearVelocity = Vector2.zero;
     moveDirection = Vector2.zero;
 
-    StartCoroutine(Delay(stunTime, () =>
+    stunRoutine = StartCoroutine(Delay(stunTime, () =>
     {
       isStun = false;
     }));
@@ -88,7 +121,7 @@ public class Player : MonoBehaviour
 
   public void OnMove(InputValue inputValue)
   {
-    if (isStun) return;
+    if (isStun || isDead) return;
 
     moveDirection = inputValue.Get<Vector2>();
     if (aniClip != Walking)
@@ -103,7 +136,7 @@ public class Player : MonoBehaviour
 
   public void OnAttack(InputValue inputValue)
   {
-    if (isStun) return;
+    if (isStun || isDead) return;
 
     if (item != null)
     {
@@ -114,7 +147,7 @@ public class Player : MonoBehaviour
   
   public void OnAltAttack(InputValue inputValue)
   {
-    if (isStun) return;
+    if (isStun || isDead) return;
 
     if (item != null)
     {
@@ -124,7 +157,7 @@ public class Player : MonoBehaviour
 
   public void OnInteract(InputValue inputValue)
   {
-    if (isStun) return;
+    if (isStun || isDead) return;
 
     if (item != null)
     {
