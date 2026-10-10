@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
   [Header("UI")]
   public HealthBar healthBar;
   public HealthBar healthBarSmall;
-
+  public Menu menu;
+ 
   [Header("Readings")]
   public bool playerHit = false;
   public int windDirection = 0; // l r t b (1, 2, 3, 4)
@@ -77,12 +78,17 @@ public class GameManager : MonoBehaviour
         HealPlayer();
       }
     }
-    healthBar.SetValue(player.health / player.maxHealth);    
-    healthBarSmall.SetValue(player.health / player.maxHealth);
+
+    if (!player.isDead)
+    {
+      healthBar.SetValue(player.health / player.maxHealth);    
+      healthBarSmall.SetValue(player.health / player.maxHealth);
+    }
 
     if (player.health <= 0 && !player.isDead)
     {
       player.Die();
+      menu.Open();
     }
   }
 
