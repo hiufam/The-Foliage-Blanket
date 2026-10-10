@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
   [Header("UI")]
   public HealthBar healthBar;
+  public HealthBar healthBarSmall;
 
   [Header("Readings")]
   public bool playerHit = false;
@@ -77,7 +78,8 @@ public class GameManager : MonoBehaviour
         HealPlayer();
       }
     }
-    healthBar.SetValue(player.health / player.maxHealth);
+    healthBar.SetValue(player.health / player.maxHealth);    
+    healthBarSmall.SetValue(player.health / player.maxHealth);
   }
 
   private void FixedUpdate()
