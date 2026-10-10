@@ -3,7 +3,8 @@ using UnityEngine;
 
 public enum ObstalceType
 {
-  Shoe
+  Shoe,
+  Bottle,
 }
 
 public abstract class Obstacle : MonoBehaviour

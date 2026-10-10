@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5961296267031044090}
   - component: {fileID: 5859560067914420353}
   - component: {fileID: 1594681484730602570}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shoe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,9 +80,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -508095041
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 1289258859359356066, guid: d6325572c8958d74e973a9178cf0d356, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

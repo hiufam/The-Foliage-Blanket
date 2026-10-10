@@ -229,6 +229,8 @@ MonoBehaviour:
   obstacles:
   - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
     spawnWeight: 10
+  - prefab: {fileID: 4770159240201968098, guid: 4238d242ff3029c43a321bd4148bd035, type: 3}
+    spawnWeight: 10
   startPos: {x: -12, y: 4}
   dir: {x: 0, y: -1}
   rayDir: {x: 1, y: 0}
@@ -396,6 +398,8 @@ MonoBehaviour:
   windRayPrefab: {fileID: 5645877060685169998, guid: 7748bd0531095c14788f0b2c9e9afbc9, type: 3}
   obstacles:
   - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
+    spawnWeight: 10
+  - prefab: {fileID: 4770159240201968098, guid: 4238d242ff3029c43a321bd4148bd035, type: 3}
     spawnWeight: 10
   startPos: {x: 8, y: 6}
   dir: {x: -1, y: 0}
@@ -14964,6 +14968,8 @@ MonoBehaviour:
   obstacles:
   - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
     spawnWeight: 10
+  - prefab: {fileID: 4770159240201968098, guid: 4238d242ff3029c43a321bd4148bd035, type: 3}
+    spawnWeight: 10
   startPos: {x: 12, y: 4}
   dir: {x: 0, y: -1}
   rayDir: {x: -1, y: 0}
@@ -15027,6 +15033,8 @@ MonoBehaviour:
   windRayPrefab: {fileID: 5645877060685169998, guid: 7748bd0531095c14788f0b2c9e9afbc9, type: 3}
   obstacles:
   - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
+    spawnWeight: 10
+  - prefab: {fileID: 4770159240201968098, guid: 4238d242ff3029c43a321bd4148bd035, type: 3}
     spawnWeight: 10
   startPos: {x: 8, y: -6}
   dir: {x: -1, y: 0}

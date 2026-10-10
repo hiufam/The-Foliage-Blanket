@@ -33,6 +33,23 @@ public class GameManager : MonoBehaviour
   private bool allowHeal = false;
   private List<int> windDirs = new() {1, 2, 3, 4};
 
+  public static GameManager Instance { get; private set; }
+
+  private void Awake()
+  {
+    // Check if an instance already exists
+    if (Instance != null && Instance != this)
+    {
+      Destroy(gameObject);
+      return;
+    }
+
+    Instance = this;
+
+    DontDestroyOnLoad(gameObject);
+  }
+
+
   private void Start()
   {
     if (callWindOnStart) StartWind(1);

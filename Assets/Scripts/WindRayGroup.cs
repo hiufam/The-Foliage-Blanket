@@ -112,6 +112,13 @@ public class WindRayGroup : MonoBehaviour
       }
     }
 
+    if (instance.OType == ObstalceType.Bottle)
+    {
+      Vector2 posPlayer = GameManager.Instance.player.transform.position;
+
+      targetPos = posPlayer;
+    }
+
     Vector2 aimDir = targetPos + deviation - pos;
 
     // Debug.DrawRay(spawnPos, aimDir * 5f, Color.red);
@@ -120,7 +127,10 @@ public class WindRayGroup : MonoBehaviour
 
     StartCoroutine(Delay(5f, () =>
     {
-      Destroy(instance.gameObject);
+      if (instance && instance.gameObject)
+      {
+        Destroy(instance.gameObject);
+      }
     }));
   }
 
