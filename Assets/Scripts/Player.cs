@@ -15,6 +15,12 @@ public class Player : MonoBehaviour
 
   private Vector3 moveDirection;
   private Vector2 lookDirection;
+  private Rigidbody2D rb;
+
+  private void Awake()
+  {
+    rb = GetComponent<Rigidbody2D>();
+  }
 
   private void Start()
   {
@@ -23,8 +29,13 @@ public class Player : MonoBehaviour
 
   private void Update()
   {
-    UpdatePosition();
+    // UpdatePosition();
     UpdateArmRotation();
+  }
+
+  private void FixedUpdate() 
+  {
+    rb.linearVelocity = moveDirection * speed;  
   }
 
   public void OnMove(InputValue inputValue)
