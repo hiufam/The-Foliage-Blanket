@@ -197,7 +197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &23875880
 Transform:
   m_ObjectHideFlags: 0
@@ -226,12 +226,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindRayGroup
   windRayPrefab: {fileID: 5645877060685169998, guid: 7748bd0531095c14788f0b2c9e9afbc9, type: 3}
+  obstacles:
+  - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
+    spawnWeight: 10
   startPos: {x: -12, y: 4}
   dir: {x: 0, y: -1}
   rayDir: {x: 1, y: 0}
+  obstacleAimVariance: 1
+  obstacleInterval: 2
+  throwForce: 250
+  throwTorque: 175
   raysCount: 16
   raysGap: 0.5
   playerHit: 0
+  activate: 0
 --- !u!114 &140190701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,7 +365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &189388722
 Transform:
   m_ObjectHideFlags: 0
@@ -386,12 +394,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindRayGroup
   windRayPrefab: {fileID: 5645877060685169998, guid: 7748bd0531095c14788f0b2c9e9afbc9, type: 3}
+  obstacles:
+  - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
+    spawnWeight: 10
   startPos: {x: 8, y: 6}
   dir: {x: -1, y: 0}
   rayDir: {x: 0, y: -1}
+  obstacleAimVariance: 1
+  obstacleInterval: 2
+  throwForce: 250
+  throwTorque: 175
   raysCount: 33
   raysGap: 0.5
   playerHit: 0
+  activate: 0
 --- !u!4 &193105839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7975365045936633281, guid: a45eb720a9bbe5e43b0aaecc98868a1b, type: 3}
@@ -1059,6 +1075,7 @@ MonoBehaviour:
   minLeafs: 5
   scanRate: 0.5
   leaves: []
+  polys: []
 --- !u!114 &521012073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14859,7 +14876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1603380731
 Transform:
   m_ObjectHideFlags: 0
@@ -14888,12 +14905,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindRayGroup
   windRayPrefab: {fileID: 5645877060685169998, guid: 7748bd0531095c14788f0b2c9e9afbc9, type: 3}
+  obstacles:
+  - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
+    spawnWeight: 10
   startPos: {x: 12, y: 4}
   dir: {x: 0, y: -1}
   rayDir: {x: -1, y: 0}
+  obstacleAimVariance: 1
+  obstacleInterval: 2
+  throwForce: 250
+  throwTorque: 175
   raysCount: 16
   raysGap: 0.5
   playerHit: 0
+  activate: 0
 --- !u!4 &1608201298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7975365045936633281, guid: a45eb720a9bbe5e43b0aaecc98868a1b, type: 3}
@@ -14915,7 +14940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1623493855
 Transform:
   m_ObjectHideFlags: 0
@@ -14944,12 +14969,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindRayGroup
   windRayPrefab: {fileID: 5645877060685169998, guid: 7748bd0531095c14788f0b2c9e9afbc9, type: 3}
+  obstacles:
+  - prefab: {fileID: 5961296267031044090, guid: 9d20fcd4c7d26a348b2fd4748486a67d, type: 3}
+    spawnWeight: 10
   startPos: {x: 8, y: -6}
   dir: {x: -1, y: 0}
   rayDir: {x: 0, y: 1}
+  obstacleAimVariance: 1
+  obstacleInterval: 2
+  throwForce: 250
+  throwTorque: 175
   raysCount: 33
   raysGap: 0.5
   playerHit: 0
+  activate: 0
 --- !u!1 &1724406687
 GameObject:
   m_ObjectHideFlags: 0

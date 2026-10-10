@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     playerHit = false;
 
     foreach (var item in windRayGroups)
-      item.gameObject.SetActive(false);
+      item.Deactivate();
   
     foreach(var item in windParticles)
       item.Stop();
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     StartCoroutine(Delay(windStartDelay, () =>
     {
-      windRayGroups[index].gameObject.SetActive(true);
+      windRayGroups[index].Activate();
     }));
 
     windArea.ChangeDir(dir);

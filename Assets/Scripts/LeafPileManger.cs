@@ -16,9 +16,9 @@ public class LeafPileManager : MonoBehaviour
   public float scanRate = 1f;
 
   public List<Leaf> leaves = new();
+  public List<GameObject> polys = new();
 
   private List<LeafPile> leafPiles = new();
-  private List<GameObject> polys = new();
   private int clusterCounter = 0;
   private LayerMask layer;
 
