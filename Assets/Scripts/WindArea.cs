@@ -60,6 +60,33 @@ public class WindArea : MonoBehaviour
     return randomNumbers;
   }
 
+  public void ChangeDir(int dir)
+  {
+    switch (dir)
+    {
+      case 1: 
+        windDir = Vector2.right;
+        break;
+
+      case 2: 
+        windDir = Vector2.left;
+        break;
+
+      case 3: 
+        windDir = Vector2.down;
+        break;
+
+      case 4: 
+        windDir = Vector2.up;
+        break;
+
+
+      default:
+        windDir = Vector2.right;
+        break;
+    }
+  }
+
   private void ApplyForce()
   {
     if (objects.Count == 0) return;
