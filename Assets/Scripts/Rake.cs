@@ -25,6 +25,7 @@ public class Rake : Item
   public GameObject pickupTextPrefab;
   public GameObject pickupText;
 
+  private bool gameStart = false;
   private BoxCollider2D cl;
   private Animator animator;
   private List<GameObject> gameObjects = new();
@@ -73,6 +74,12 @@ public class Rake : Item
   public override void Pickup(Transform parent)
   {
     base.Pickup(parent);
+
+    if (!gameStart)
+    {
+      GameManager.Instance.StartGame();
+      gameStart = true;
+    }
 
     secondCl.layer = 0;
     animator.enabled = true;

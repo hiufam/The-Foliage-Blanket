@@ -9,6 +9,7 @@ using UnityEngine;
 public class WindArea : MonoBehaviour
 {
   [Header("Attributes")]
+  public bool activate = false;
   public float force = 100f;
   public float clusterDragForce = 50f;
   public float2 forceVariance = new Vector2(-10f, 10f);
@@ -26,6 +27,8 @@ public class WindArea : MonoBehaviour
 
   private void Update()
   {
+    if (!activate) return;
+
     if (applyForceTimer > interval)
     {
       applyForceTimer = 0f;

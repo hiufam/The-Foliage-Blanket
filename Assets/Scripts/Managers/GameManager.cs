@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviour
   public Menu menu;
   public Timer timer;
   public TextMeshProUGUI gameText;
+  public TextMeshPro[] tutorialTexts;
+
 
   [Header("Readings")]
   public bool playerHit = false;
@@ -58,10 +60,7 @@ public class GameManager : MonoBehaviour
 
   private void Start()
   {
-    if (callWindOnStart) StartWind(1);
-    StartCoroutine(CallWind());
-    StartCoroutine(GameTimer());
-    gameText.gameObject.SetActive(false);
+    // StartGame();
   }
 
   private void Update()
@@ -119,6 +118,19 @@ public class GameManager : MonoBehaviour
     DetectHit();
   }
 
+  public void StartGame()
+  {
+    windArea.activate = true;
+
+    if (callWindOnStart) StartWind(1);
+
+    StartCoroutine(HideTutorial());
+    StartCoroutine(CallWind());
+    StartCoroutine(GameTimer());
+
+    gameText.gameObject.SetActive(false);
+  }
+
   public void Reset()
   {
     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -159,6 +171,28 @@ public class GameManager : MonoBehaviour
     windArea.ChangeDir(dir);
 
     currentWindDir = dir;
+  }
+
+  private IEnumerator HideTutorial(float time = 6f, float hideTime = 1f)
+  {
+    yield return new WaitForSeconds(time);
+
+    float elapsedTime = 0f;
+
+    while (elapsedTime < hideTime)
+    {
+      elapsedTime += Time.deltaTime;
+      
+      float alpha = Mathf.Lerp(1, 0, elapsedTime / hideTime);
+      Color color = new Color(255, 255, 255, alpha);
+
+      foreach (var item in tutorialTexts)
+      {
+        item.color = color;
+      } 
+
+      yield return null;
+    }
   }
 
   private IEnumerator CallWind()
