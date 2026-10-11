@@ -45,6 +45,14 @@ public class Rake : Item
     animator.enabled = false;
   }
 
+  private void Update()
+  {
+    if (pickupText)
+    {
+      pickupText.transform.position = (Vector2)transform.position + Vector2.up;
+    }
+  }
+
   public void PlaySweepSFX()
   {
     SoundFXManager.instance.PlaySoundFXClip(sweepSFX, transform,volume: 0.6f, pitch: new(1f, 1.2f));

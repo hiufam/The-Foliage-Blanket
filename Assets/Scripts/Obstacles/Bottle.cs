@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Bottle : Obstacle
 {
-  public float pushForce = 20f;
+  public float pushForce = 100f;
+  public float torqueForce = 50f;
 
   [Header("Particles")]
   public ParticleSystem brokenGlasses;
@@ -20,6 +21,17 @@ public class Bottle : Obstacle
       SoundFXManager.instance.PlaySoundFXClip(brokenBottleClip, transform, volume: 0.6f);
 
       player.Stun();
+      Item item = player.DropItem();
+
+      if (item != null && item.TryGetComponent(out Rigidbody2D rb))
+      {
+        float x = UnityEngine.Random.Range(-1, 1);
+        float y = UnityEngine.Random.Range(-1, 1);
+        
+        rb.AddForce(pushForce * new Vector2(x, y).normalized);
+        rb.AddTorque(torqueForce);
+      }
+
       Destroy(gameObject);
     }
   }

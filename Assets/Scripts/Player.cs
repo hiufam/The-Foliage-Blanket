@@ -178,6 +178,12 @@ public class Player : MonoBehaviour
       {
         detectedItem.Pickup(arm.transform);
         item = detectedItem;
+
+        if (item.TryGetComponent(out Rigidbody2D rb))
+        {
+          rb.linearVelocity = Vector2.zero;
+          rb.angularVelocity = 0f;
+        }
       }
     }
   }
@@ -191,6 +197,20 @@ public class Player : MonoBehaviour
       item.Drop(arm.transform);
       item = null;
     }
+  }
+
+  public Item DropItem()
+  {
+    Item droppedItem = null;
+
+    if (item != null)
+    { 
+      droppedItem = item;
+      item.Drop(arm.transform);
+      item = null;
+    }
+
+    return droppedItem;
   }
 
   private void UpdatePosition()
