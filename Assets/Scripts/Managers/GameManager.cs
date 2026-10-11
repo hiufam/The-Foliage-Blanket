@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
   
       TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
 
-      timer.SetText($"{(int)timeSpan.TotalMinutes}:{timeSpan.Seconds:D2}"); 
+      timer.SetText($"{(int)timeSpan.TotalMinutes:D2}:{timeSpan.Seconds:D2}"); 
 
       yield return null;
     }

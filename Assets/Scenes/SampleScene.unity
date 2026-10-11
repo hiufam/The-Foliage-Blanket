@@ -335,7 +335,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &34668407
 RectTransform:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -779, y: 398}
-  m_SizeDelta: {x: 231.35, y: 117.2}
+  m_SizeDelta: {x: 273.8, y: 112.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &34668408
 MonoBehaviour:
@@ -3399,8 +3399,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14, y: 19}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 6.9, y: 19}
+  m_SizeDelta: {x: 256.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &723859945
 MonoBehaviour:
@@ -3422,7 +3422,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 5:00
+  m_text: 05:00
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6724f00b29b34fa40bbe05db74ab6ca9, type: 2}
   m_sharedMaterial: {fileID: -1497016105822714665, guid: 6724f00b29b34fa40bbe05db74ab6ca9, type: 2}
@@ -9581,6 +9581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91a9ac51cba16c545bec72c280fba1f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindArea
+  activate: 0
   force: 120
   clusterDragForce: 50
   forceVariance:
