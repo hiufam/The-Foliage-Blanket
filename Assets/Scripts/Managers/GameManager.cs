@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
   public ParticleSystem[] windParticles;
   public Player player;
   public WindArea windArea;
+  public Cat MrSnuffle;
 
 
   [Header("Attributes")]
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
   public float diffRate = 30f;
   public int diff = 1;
   public bool callWindOnStart = true;
+  public bool callBossText = false;
 
   [Header("Diff")]
   public float obstacleIntervalRate = 0.1f;
@@ -44,6 +46,7 @@ public class GameManager : MonoBehaviour
   public Timer timer;
   public TextMeshProUGUI gameText;
   public TextMeshPro[] tutorialTexts;
+  public TextMeshPro bossText;
 
 
   [Header("Readings")]
@@ -199,6 +202,35 @@ public class GameManager : MonoBehaviour
 
     // Update wind area
     windArea.maxLeavesPercentage = Mathf.Min(leafPercentageDiff.y, leafPercentageDiff.x + leafPercentageRate * diff);
+
+    MrSnuffle.gameObject.SetActive(diff >= 5);
+
+    if (!callBossText && MrSnuffle.gameObject.activeSelf)
+    {
+      bossText.gameObject.SetActive(true);
+
+      StartCoroutine(HideBossText());
+      callBossText = true;
+    }
+  }
+
+  private IEnumerator HideBossText(float time = 3f, float hideTime = 1f)
+  {
+    yield return new WaitForSeconds(time);
+
+    float elapsedTime = 0f;
+
+    while (elapsedTime < hideTime)
+    {
+      elapsedTime += Time.deltaTime;
+      
+      float alpha = Mathf.Lerp(1, 0, elapsedTime / hideTime);
+      Color color = new Color(255, 255, 255, alpha);
+
+      bossText.color = color;
+
+      yield return null;
+    }
   }
 
   private IEnumerator HideTutorial(float time = 3f, float hideTime = 1f)
