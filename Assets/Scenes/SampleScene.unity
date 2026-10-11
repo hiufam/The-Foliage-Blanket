@@ -1500,8 +1500,9 @@ GameObject:
   - component: {fileID: 372544630}
   - component: {fileID: 372544631}
   - component: {fileID: 372544632}
+  - component: {fileID: 372544633}
   m_Layer: 3
-  m_Name: Sprite
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1603,6 +1604,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &372544633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 372544629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa67f4fc9b993a74fba7770dd7928d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSFX
+  runClip: {fileID: 8300000, guid: 6e0f3409bac4dd9419973ba32327171e, type: 3}
 --- !u!1 &375718613
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,6 +2545,7 @@ GameObject:
   - component: {fileID: 521012071}
   - component: {fileID: 521012072}
   - component: {fileID: 521012073}
+  - component: {fileID: 521012074}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -2609,6 +2624,22 @@ MonoBehaviour:
   playerHit: 0
   survive: 0
   windDirection: 0
+--- !u!114 &521012074
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521012070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4f34adefbc6d8248aed6f0ad1fab41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundFXManager
+  maxDuplicatedSoundClips: 100
+  audibleRadius: 25
+  soundFXObject: {fileID: 8300946038191189663, guid: 452f22079015d1f4e85d63ec96a28bad, type: 3}
+  soundPrefab: {fileID: -1923179170675787334, guid: 452f22079015d1f4e85d63ec96a28bad, type: 3}
 --- !u!1 &531876150
 GameObject:
   m_ObjectHideFlags: 0

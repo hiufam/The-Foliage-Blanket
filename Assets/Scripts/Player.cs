@@ -133,7 +133,6 @@ public class Player : MonoBehaviour
       animator.Play(Walking);
       aniClip = Walking;
     }
-    
 
     spriteRenderer.flipX = moveDirection.x < 0;
   }
