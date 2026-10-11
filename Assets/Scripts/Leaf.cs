@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class Leaf : MonoBehaviour
 {
+  public Sprite defaultSprite;
+  public Sprite highlightSprite;
   public int? label = null;
   public int trueLabel = 0;
   [HideInInspector]
@@ -27,11 +29,13 @@ public class Leaf : MonoBehaviour
   {
     if (label != null && label >= 0)
     {
-      spriteRenderer.color = Color.white;
+      // spriteRenderer.color = Color.white;
+      spriteRenderer.sprite = highlightSprite;
     }
     else
     {
-      spriteRenderer.color = Color.orangeRed;
+      // spriteRenderer.color = Color.orangeRed;
+      spriteRenderer.sprite = defaultSprite;
     }
   }
 

@@ -169,4 +169,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff926f810a254d4e80a8a06125bafa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Leaf
+  defaultSprite: {fileID: 8083619875462863978, guid: 23e392c9ff69a1f459cf595d62bf8af5, type: 3}
+  highlightSprite: {fileID: 4686583572322660086, guid: 8848584f72a7cb544929ec051db3dfc7, type: 3}
   trueLabel: 0
