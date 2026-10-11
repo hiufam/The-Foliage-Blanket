@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour
   public TextMeshProUGUI gameText;
   public TextMeshPro[] tutorialTexts;
   public TextMeshPro bossText;
+  public TextMeshProUGUI modeText;
+  public Button modeButton;
 
 
   [Header("Readings")]
@@ -77,6 +80,9 @@ public class GameManager : MonoBehaviour
   private void Start()
   {
     // StartGame();
+
+    modeText.text = ConfigManager.Instance.isEndless ? "Normal" : "Endless";
+    modeButton.onClick.AddListener(ConfigManager.Instance.ToggleEndless);
   }
 
   private void Update()
@@ -142,7 +148,15 @@ public class GameManager : MonoBehaviour
 
     StartCoroutine(HideTutorial());
     StartCoroutine(CallWind());
-    StartCoroutine(GameTimer());
+
+    if (ConfigManager.Instance.isEndless)
+    {
+      StartCoroutine(GameTimerEndless());
+    }
+    else
+    {
+      StartCoroutine(GameTimer());
+    }
 
     gameText.gameObject.SetActive(false);
   }
@@ -283,6 +297,27 @@ public class GameManager : MonoBehaviour
   {
     yield return new WaitForSeconds(delay);
     action?.Invoke();
+  }
+
+
+  private IEnumerator GameTimerEndless()
+  {
+    float elapsedTime = 0f;
+
+    timer.gameObject.SetActive(true);
+
+    while (true)
+    {
+      elapsedTime += Time.deltaTime;
+  
+      TimeSpan timeSpan = TimeSpan.FromSeconds(elapsedTime);
+
+      UpdateDiff(elapsedTime);
+
+      timer.SetText($"{(int)timeSpan.TotalMinutes:D2}:{timeSpan.Seconds:D2}"); 
+
+      yield return null;
+    }
   }
 
   private IEnumerator GameTimer()
