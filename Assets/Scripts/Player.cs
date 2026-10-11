@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
   private static readonly int Walking = Animator.StringToHash("Walking");
   private static readonly int Default = Animator.StringToHash("Default");
   private static readonly int Knockout = Animator.StringToHash("Knockout");
+  private static readonly int Teleport = Animator.StringToHash("Teleport");
 
   [Header("Attributes")]
   [DefaultValue(10)]

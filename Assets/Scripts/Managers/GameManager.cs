@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
   public float timeBeforeHeal = 1f;
   public float windStartDelay = 1f;
   public float windDuration = 30f;
+  public float gameTime = 300f;
   public bool callWindOnStart = true;
 
 
@@ -26,9 +28,12 @@ public class GameManager : MonoBehaviour
   public HealthBar healthBar;
   public HealthBar healthBarSmall;
   public Menu menu;
- 
+  public Timer timer;
+  public TextMeshProUGUI gameText;
+
   [Header("Readings")]
   public bool playerHit = false;
+  public bool survive = false;
   public int windDirection = 0; // l r t b (1, 2, 3, 4)
 
 
@@ -55,10 +60,24 @@ public class GameManager : MonoBehaviour
   {
     if (callWindOnStart) StartWind(1);
     StartCoroutine(CallWind());
+    StartCoroutine(GameTimer());
+    gameText.gameObject.SetActive(false);
   }
 
   private void Update()
   {
+    if (survive)
+    {
+      if (!gameText.gameObject.activeSelf)
+      {
+        menu.Open();
+
+        gameText.gameObject.SetActive(true);
+        gameText.text = "YOU SURVIVED!";
+      }
+      return;
+    }
+
     if (playerHit)
     {
       allowHeal = false;
@@ -89,6 +108,9 @@ public class GameManager : MonoBehaviour
     {
       player.Die();
       menu.Open();
+
+      gameText.gameObject.SetActive(true);
+      gameText.text = "YOU DIDN'T LAST!";
     }
   }
 
@@ -167,6 +189,26 @@ public class GameManager : MonoBehaviour
   {
     yield return new WaitForSeconds(delay);
     action?.Invoke();
+  }
+
+  private IEnumerator GameTimer()
+  {
+    float elapsedTime = 0f;
+
+    while (elapsedTime < gameTime)
+    {
+      elapsedTime += Time.deltaTime;
+
+      float remainingTime = gameTime - elapsedTime;
+  
+      TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
+
+      timer.SetText($"{(int)timeSpan.TotalMinutes}:{timeSpan.Seconds:D2}"); 
+
+      yield return null;
+    }
+
+    survive = true;
   }
 
   private void DetectHit()
