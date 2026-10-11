@@ -17,6 +17,10 @@ public class Rake : Item
   public float torqueForce = 100f;
 
   [Header("Components")]
+  public SpriteRenderer spriteRenderer;
+  public GameObject secondCl;
+  public GameObject pickupTextPrefab;
+  public GameObject pickupText;
 
   private BoxCollider2D cl;
   private Animator animator;
@@ -26,6 +30,73 @@ public class Rake : Item
   {
     cl = GetComponent<BoxCollider2D>();
     animator = GetComponent<Animator>();
+  }
+
+  private void Start()
+  {
+    pickupText = Instantiate(pickupTextPrefab, Vector2.zero, Quaternion.identity);
+    pickupText.SetActive(false);
+    
+    secondCl.layer = 6;
+    animator.enabled = false;
+  }
+
+  public override void EnablePickup()
+  {
+    base.EnablePickup();
+
+    if (pickupText != null)
+    {
+      pickupText.SetActive(true);
+      pickupText.transform.position = (Vector2)transform.position + Vector2.up;
+    }
+  }
+
+  public override void DisablePickup()
+  {
+    base.DisablePickup();
+
+    if (pickupText != null)
+    {
+      pickupText.SetActive(false);
+    }
+  }
+
+  public override void Pickup(Transform parent)
+  {
+    base.Pickup(parent);
+
+    secondCl.layer = 0;
+    animator.enabled = true;
+
+    transform.SetParent(parent);
+    transform.localPosition = Vector2.zero;
+    transform.localRotation = Quaternion.identity;
+
+    spriteRenderer.sortingOrder = 1;
+
+    if (pickupText != null)
+    {
+      pickupText.SetActive(false);
+    }
+  }
+
+  public override void Drop(Transform parent)
+  {
+    base.Drop(parent);
+
+    secondCl.layer = 6;
+    animator.enabled = false;
+
+    spriteRenderer.sortingOrder = 0;
+
+    transform.SetParent(null);
+
+    if (pickupText != null)
+    {
+      pickupText.SetActive(true);
+      pickupText.transform.position = (Vector2)transform.position + Vector2.up;
+    }
   }
 
   public override void Use(Vector2? dir = null)

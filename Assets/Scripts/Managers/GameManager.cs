@@ -195,6 +195,8 @@ public class GameManager : MonoBehaviour
   {
     float elapsedTime = 0f;
 
+    timer.gameObject.SetActive(true);
+
     while (elapsedTime < gameTime)
     {
       elapsedTime += Time.deltaTime;

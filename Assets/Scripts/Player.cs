@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
   public GameObject arm;
   public Animator animator;
   public SpriteRenderer spriteRenderer;
+  public ItemDetector itemDetector;
 
   private Vector3 moveDirection;
   private Vector2 lookDirection;
@@ -47,6 +48,8 @@ public class Player : MonoBehaviour
 
   private void Update()
   {
+    itemDetector.enabled = !item;
+
     if (isStun || isDead) return;
     // UpdatePosition();
     UpdateArmRotation();
@@ -160,11 +163,26 @@ public class Player : MonoBehaviour
   {
     if (isStun || isDead) return;
 
+    if (item == null)
+    {
+      Item detectedItem = itemDetector.detectedItem;
+
+      if (detectedItem != null)
+      {
+        detectedItem.Pickup(arm.transform);
+        item = detectedItem;
+      }
+    }
+  }
+
+  public void OnDrop(InputValue inputValue)
+  {
+    if (isStun || isDead) return;
+
     if (item != null)
     {
-      item.transform.SetParent(arm.transform);
-      item.transform.localPosition = Vector2.zero;
-      item.transform.localRotation = Quaternion.identity;
+      item.Drop(arm.transform);
+      item = null;
     }
   }
 

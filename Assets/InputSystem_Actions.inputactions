@@ -52,6 +52,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Drop",
+                    "type": "Button",
+                    "id": "baf5c1e4-cd3b-4ff9-b91d-18aff2e494ef",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Crouch",
                     "type": "Button",
                     "id": "27c5f898-bc57-4ee1-8800-db469aca5fe3",
@@ -491,6 +500,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Alt Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "12efa0a2-8285-41d3-936a-11e44438cd21",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Drop",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

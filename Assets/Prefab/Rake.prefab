@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5850830236281366286}
   - component: {fileID: 4207100744161825980}
-  m_Layer: 0
+  - component: {fileID: 2375445602589398673}
+  m_Layer: 6
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -508095041
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 2846634610251462477, guid: 23e392c9ff69a1f459cf595d62bf8af5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -91,6 +92,42 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!58 &2375445602589398673
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1483283989809277356}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 127
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.7500002
 --- !u!1 &7454720169463039214
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,6 +139,7 @@ GameObject:
   - component: {fileID: 8709851488900153614}
   - component: {fileID: 1017281062665408805}
   - component: {fileID: 5275288533137330922}
+  - component: {fileID: 3568369622728455471}
   - component: {fileID: 5083667694857023860}
   m_Layer: 0
   m_Name: Rake
@@ -138,12 +176,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 485006212a05dad42b18c5b47b798315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Rake
+  allowPickup: 0
   pushForce: 150
   pullForce: 100
   pushForceVariance:
     x: -5
     y: 5
   torqueForce: 100
+  spriteRenderer: {fileID: 4207100744161825980}
+  secondCl: {fileID: 1483283989809277356}
+  pickupTextPrefab: {fileID: 5038962565773231132, guid: a470feb39e3c3ad4491ac0793d3f9a07, type: 3}
+  pickupText: {fileID: 0}
 --- !u!61 &5275288533137330922
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -190,6 +233,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 1.07}
   m_EdgeRadius: 0
+--- !u!50 &3568369622728455471
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7454720169463039214}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!95 &5083667694857023860
 Animator:
   serializedVersion: 7
@@ -198,7 +268,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7454720169463039214}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 1f38da55e719f9748a88925bc221eea0, type: 2}
   m_CullingMode: 0
