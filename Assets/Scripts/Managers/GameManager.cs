@@ -3,7 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
+using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
@@ -21,7 +24,17 @@ public class GameManager : MonoBehaviour
   public float windStartDelay = 1f;
   public float windDuration = 30f;
   public float gameTime = 300f;
+  public float diffRate = 30f;
+  public int diff = 1;
   public bool callWindOnStart = true;
+
+  [Header("Diff")]
+  public float obstacleIntervalRate = 0.1f;
+  public float2 obstacleDiff = new float2(0.2f, 2f);
+  public float windThrowForceRate = 20f;
+  public float2 windThrowForceDiff = new float2(200f, 400f);
+  public float leafPercentageRate = 0.02f;
+  public float2 leafPercentageDiff = new float2(0.6f, 0.8f);
 
 
   [Header("UI")]
@@ -173,6 +186,21 @@ public class GameManager : MonoBehaviour
     currentWindDir = dir;
   }
 
+  private void UpdateDiff(float time)
+  {
+    diff = Mathf.Max(0, (int)(time / diffRate));
+
+    // Update wind group
+    foreach (var item in windRayGroups)
+    {
+      item.obstacleInterval = Mathf.Max(obstacleDiff.x, obstacleDiff.y - obstacleIntervalRate * diff);
+      item.throwForce = Mathf.Min(windThrowForceDiff.y, windThrowForceDiff.x + windThrowForceRate * diff);
+    } 
+
+    // Update wind area
+    windArea.maxLeavesPercentage = Mathf.Min(leafPercentageDiff.y, leafPercentageDiff.x + leafPercentageRate * diff);
+  }
+
   private IEnumerator HideTutorial(float time = 3f, float hideTime = 1f)
   {
     yield return new WaitForSeconds(time);
@@ -238,6 +266,8 @@ public class GameManager : MonoBehaviour
       float remainingTime = gameTime - elapsedTime;
   
       TimeSpan timeSpan = TimeSpan.FromSeconds(remainingTime);
+
+      UpdateDiff(elapsedTime);
 
       timer.SetText($"{(int)timeSpan.TotalMinutes:D2}:{timeSpan.Seconds:D2}"); 
 

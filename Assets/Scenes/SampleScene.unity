@@ -3989,8 +3989,11 @@ MonoBehaviour:
   timeBeforeHeal: 0.6
   windStartDelay: 1
   windDuration: 10
-  gameTime: 300
+  gameTime: 180
+  diffRate: 20
+  diff: 1
   callWindOnStart: 1
+  obstacleIntervalRate: 0.1
   healthBar: {fileID: 679246000}
   healthBarSmall: {fileID: 1758956335}
   menu: {fileID: 842095467}
