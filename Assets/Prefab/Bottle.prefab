@@ -180,3 +180,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bottle
   pushForce: 20
+  brokenGlasses: {fileID: 5417816612608628233, guid: a20cf62ab035b8048b98d080a648c220, type: 3}
+  brokenBottleClip: {fileID: 8300000, guid: 75ac864ee48f2324c97b2f3bdf90ebe9, type: 3}

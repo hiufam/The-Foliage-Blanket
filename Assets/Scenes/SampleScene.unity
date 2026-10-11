@@ -9380,7 +9380,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1867596832}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &925303434
@@ -24603,7 +24604,7 @@ GameObject:
   - component: {fileID: 1867596832}
   - component: {fileID: 1867596831}
   m_Layer: 0
-  m_Name: Wind
+  m_Name: Wind SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24714,12 +24715,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867596830}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 925303433}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2074531511
 PrefabInstance:
@@ -29791,5 +29792,4 @@ SceneRoots:
   - {fileID: 357010755}
   - {fileID: 1412281694}
   - {fileID: 1211435092}
-  - {fileID: 1867596832}
   - {fileID: 222812506}
