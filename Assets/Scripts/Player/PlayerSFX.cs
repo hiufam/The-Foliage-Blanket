@@ -7,6 +7,6 @@ public class PlayerSFX : MonoBehaviour
 
   public void PlayRunSFX()
   {
-    SoundFXManager.instance.PlaySoundFXClip(runClip, transform, pitch: new(1f, 1.2f));
+    SoundFXManager.instance.PlaySoundFXClip(runClip, transform, volume: 0.4f, pitch: new(1f, 1.2f));
   }
 }

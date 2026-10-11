@@ -18,6 +18,9 @@ public class WindArea : MonoBehaviour
   public float maxLeavesPercentage = 0.3f;
   public Vector2 windDir = Vector2.right;
 
+  [Header("SFX")]
+  public AudioClip windClip;
+
   private float applyForceTimer = 0f;
   public List<GameObject> objects = new();
 
@@ -90,6 +93,9 @@ public class WindArea : MonoBehaviour
   private void ApplyForce()
   {
     if (objects.Count == 0) return;
+
+    SoundFXManager.instance.PlaySoundFXClip(windClip, transform, volume: 0.3f, pitch: new(1, 1.2f));
+
     maxLeaves = (int)(objects.Count * maxLeavesPercentage);
     List<int> randomIndices = RandomIndices(objects.Count, maxLeaves);
 

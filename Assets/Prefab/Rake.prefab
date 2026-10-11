@@ -183,6 +183,7 @@ MonoBehaviour:
     x: -5
     y: 5
   torqueForce: 100
+  sweepSFX: {fileID: 8300000, guid: f5dd9751cb7e9d849a3b04f55bfbdd15, type: 3}
   spriteRenderer: {fileID: 4207100744161825980}
   secondCl: {fileID: 1483283989809277356}
   pickupTextPrefab: {fileID: 5038962565773231132, guid: a470feb39e3c3ad4491ac0793d3f9a07, type: 3}

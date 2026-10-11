@@ -13,8 +13,11 @@ public class Rake : Item
   public float pushForce = 500f;
   public float pullForce = 250f;
   public float2 pushForceVariance = new float2(-10f, 10f);
-
   public float torqueForce = 100f;
+
+  [Header("SFX")]
+  public AudioClip sweepSFX;
+
 
   [Header("Components")]
   public SpriteRenderer spriteRenderer;
@@ -39,6 +42,11 @@ public class Rake : Item
     
     secondCl.layer = 6;
     animator.enabled = false;
+  }
+
+  public void PlaySweepSFX()
+  {
+    SoundFXManager.instance.PlaySoundFXClip(sweepSFX, transform,volume: 0.6f, pitch: new(1f, 1.2f));
   }
 
   public override void EnablePickup()
