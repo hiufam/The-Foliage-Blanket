@@ -134,7 +134,15 @@ public class Player : MonoBehaviour
       aniClip = Walking;
     }
 
-    spriteRenderer.flipX = moveDirection.x < 0;
+    if (moveDirection.x < 0)
+    {
+      spriteRenderer.flipX = true;      
+    }
+    
+    if (moveDirection.x > 0)
+    {
+      spriteRenderer.flipX = false;      
+    }
   }
 
   public void OnAttack(InputValue inputValue)
