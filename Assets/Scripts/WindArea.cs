@@ -19,6 +19,9 @@ public class WindArea : MonoBehaviour
   public float maxLeavesPercentage = 0.3f;
   public Vector2 windDir = Vector2.right;
 
+  [Header("Objects")]
+  public Background background;
+
   [Header("SFX")]
   public AudioClip windClip;
 
@@ -88,9 +91,12 @@ public class WindArea : MonoBehaviour
 
 
       default:
-        windDir = Vector2.right;
+        windDir = Vector2.zero;
         break;
     }
+
+    background.x = -windDir.x;
+    background.y = -windDir.y;
   }
 
   private void ApplyForce()

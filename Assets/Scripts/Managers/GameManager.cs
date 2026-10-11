@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviour
       menu.Open();
 
       gameText.gameObject.SetActive(true);
-      gameText.text = "YOU DIDN'T LAST!";
+      gameText.text = "HYPOTHERMIA!";
     }
   }
 
@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
     currentWindDir = dir;
   }
 
-  private IEnumerator HideTutorial(float time = 6f, float hideTime = 1f)
+  private IEnumerator HideTutorial(float time = 3f, float hideTime = 1f)
   {
     yield return new WaitForSeconds(time);
 
